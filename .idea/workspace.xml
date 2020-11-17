@@ -10,31 +10,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="411e8588-abed-482b-a1d3-892545f48a35" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coco.names" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/downloader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mydatabase.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/common/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/common/base_class.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/common/media.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/common/predict.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/model/backbone.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/model/common.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/model/head.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/model/neck.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/model/yolov4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/tf/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/tf/dataset.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/tf/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/tf/weights.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_yolo/tflite/__init__.py" afterDir="false" />
+    <list default="true" id="411e8588-abed-482b-a1d3-892545f48a35" name="Default Changelist" comment="v1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/downloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/downloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mydatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/mydatabase.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp1.py" beforeDir="false" afterPath="$PROJECT_DIR$/temp1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,8 +157,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.temp1" />
         <item itemvalue="Python.detect" />
+        <item itemvalue="Python.temp1" />
         <item itemvalue="Python.cord" />
         <item itemvalue="Python.temp" />
         <item itemvalue="Python.main (1)" />
@@ -194,6 +174,14 @@
       <option name="presentableId" value="Default" />
       <updated>1600359310524</updated>
     </task>
+    <task id="LOCAL-00001" summary="v1">
+      <created>1604048032749</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604048032750</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +194,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601305350019">
@@ -230,30 +223,34 @@
     </state>
     <state x="836" y="225" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604047709742" />
     <state x="1114" y="225" key="Github.UntrackedFilesDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1600942168098" />
-    <state width="1204" height="250" key="GridCell.Tab.0.bottom" timestamp="1604047316813">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2539" height="322" key="GridCell.Tab.0.bottom" timestamp="1605531950675">
+      <screen x="0" y="0" width="2560" height="1560" />
     </state>
-    <state width="1579" height="204" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1601388489751" />
-    <state width="1204" height="250" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604047316813" />
+    <state width="1579" height="322" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1605525650081" />
+    <state width="1899" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605516682605" />
     <state width="2539" height="331" key="GridCell.Tab.0.bottom/0.0.2560.1040@0.0.2560.1040" timestamp="1601050558482" />
-    <state width="1204" height="250" key="GridCell.Tab.0.center" timestamp="1604047316813">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2539" height="322" key="GridCell.Tab.0.bottom/0.0.2560.1560@0.0.2560.1560" timestamp="1605531950675" />
+    <state width="2539" height="322" key="GridCell.Tab.0.center" timestamp="1605531950675">
+      <screen x="0" y="0" width="2560" height="1560" />
     </state>
-    <state width="1579" height="204" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1601388489751" />
-    <state width="1204" height="250" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604047316813" />
+    <state width="1579" height="322" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1605525650081" />
+    <state width="1899" height="298" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605516682605" />
     <state width="2539" height="331" key="GridCell.Tab.0.center/0.0.2560.1040@0.0.2560.1040" timestamp="1601050558482" />
-    <state width="1204" height="250" key="GridCell.Tab.0.left" timestamp="1604047316813">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2539" height="322" key="GridCell.Tab.0.center/0.0.2560.1560@0.0.2560.1560" timestamp="1605531950675" />
+    <state width="2539" height="322" key="GridCell.Tab.0.left" timestamp="1605531950675">
+      <screen x="0" y="0" width="2560" height="1560" />
     </state>
-    <state width="1579" height="204" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1601388489750" />
-    <state width="1204" height="250" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604047316813" />
+    <state width="1579" height="322" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1605525650081" />
+    <state width="1899" height="298" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605516682605" />
     <state width="2539" height="331" key="GridCell.Tab.0.left/0.0.2560.1040@0.0.2560.1040" timestamp="1601050558482" />
-    <state width="1204" height="250" key="GridCell.Tab.0.right" timestamp="1604047316813">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2539" height="322" key="GridCell.Tab.0.left/0.0.2560.1560@0.0.2560.1560" timestamp="1605531950675" />
+    <state width="2539" height="322" key="GridCell.Tab.0.right" timestamp="1605531950675">
+      <screen x="0" y="0" width="2560" height="1560" />
     </state>
-    <state width="1579" height="204" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1601388489751" />
-    <state width="1204" height="250" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604047316813" />
+    <state width="1579" height="322" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1605525650081" />
+    <state width="1899" height="298" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605516682605" />
     <state width="2539" height="331" key="GridCell.Tab.0.right/0.0.2560.1040@0.0.2560.1040" timestamp="1601050558482" />
+    <state width="2539" height="322" key="GridCell.Tab.0.right/0.0.2560.1560@0.0.2560.1560" timestamp="1605531950675" />
     <state width="1899" height="342" key="GridCell.Tab.1.bottom" timestamp="1603782927284">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -276,9 +273,10 @@
     <state x="459" y="146" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1601384052420" />
     <state x="551" y="177" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601634801714" />
     <state x="734" y="177" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1600942430442" />
-    <state x="872" y="253" key="Vcs.Push.Dialog.v2" timestamp="1600942337583">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="654" y="253" key="Vcs.Push.Dialog.v2" timestamp="1604047908428">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="654" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604047908428" />
     <state x="872" y="253" key="Vcs.Push.Dialog.v2/0.0.2560.1040@0.0.2560.1040" timestamp="1600942337583" />
     <state x="100" y="102" width="1782" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603875486455">
       <screen x="0" y="0" width="1920" height="1040" />

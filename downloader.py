@@ -1,7 +1,8 @@
-import os
+import sqlite3
 import urllib.request
 import json
 import boto3
+from urllib.error import HTTPError
 
 
 def download(channel, name):
@@ -31,12 +32,47 @@ def r8(channel, time, name, name_p, room):
         "object_type_id": "1",
         "object_id": room
     }
-
+    conn = sqlite3.connect("mydatabase.db")
+    cursor = conn.cursor()
     myurl = "https://r.8h.ru/api/event/create.php"
 
     req = urllib.request.Request(myurl)
     req.add_header('Content-Type', 'application/json; charset=utf-8')
     jsondata = json.dumps(body)
+    print(jsondata)
+    cursor.execute("SELECT * FROM requests WHERE request=? AND sent=0;", (jsondata,))
+    conn.commit()
+    in_table = cursor.fetchone()
+    try:
+
+        if in_table is None:
+            jsondataasbytes = jsondata.encode('utf-8')  # needs to be bytes
+            response = urllib.request.urlopen(req, jsondataasbytes)
+            data = json.load(response)
+            if not data:
+                while True:
+                    response = urllib.request.urlopen(req, jsondataasbytes)
+                    data = json.load(response)
+                    if data:
+                        break
+            cursor.execute("INSERT INTO requests VALUES(?,?)", (jsondata, 1))
+            conn.commit()
+            return 1
+        else:
+            cursor.execute("INSERT INTO requests VALUES(?,?)", (jsondata, 0))
+            conn.commit()
+            return 0
+    except HTTPError:
+        cursor.execute("INSERT INTO requests VALUES(?,?)", (jsondata, 0))
+        conn.commit()
+
+
+def r8_short(reqs):
+    myurl = "https://r.8h.ru/api/event/create.php"
+    req = urllib.request.Request(myurl)
+    req.add_header('Content-Type', 'application/json; charset=utf-8')
+
+    jsondata = reqs
     print(jsondata)
     jsondataasbytes = jsondata.encode('utf-8')  # needs to be bytes
     response = urllib.request.urlopen(req, jsondataasbytes)
@@ -47,4 +83,4 @@ def r8(channel, time, name, name_p, room):
             data = json.load(response)
             if data:
                 break
-    print(data)
+    return data

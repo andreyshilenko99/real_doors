@@ -11,6 +11,7 @@ from downloader import download
 from downloader import r8
 import subprocess
 from urllib.error import HTTPError
+from downloader import r8_short
 
 # os.environ["TF_MIN_GPU_MULTIPROCESSOR_COUNT"] = "8"
 gpus = tf.config.experimental.list_physical_devices('GPU')
@@ -71,7 +72,7 @@ def for_frame(frame_number, output_array, return_detected_frame, x1_door_area,
     #                   4)
     #     return sq
 
-    square = {'ch01': [60, 55, 13], 'ch06': [73, 50, 13], 'ch04': [90, 50], 'ch07': [90, 50], 'ch08': [60, 60, 13]}
+    square = {'ch01': [70, 55, 13], 'ch06': [73, 50, 13], 'ch04': [90, 90], 'ch07': [90, 90], 'ch08': [60, 60, 13]}
     detection_rects = {'ch06': [[300, 0, 380, 209], [399, 32, 471, 387], [0, 427, 640, 480]],
                        'ch01': [[105, 15, 219, 365], [278, 60, 375, 400], [0, 427, 640, 480]],
                        'ch04': [[380, 30, 490, 355], [130, 0, 290, 480]],
@@ -199,14 +200,14 @@ def for_frame(frame_number, output_array, return_detected_frame, x1_door_area,
                 return 1
             elif avg1 / count1 < avg2 / count2 and avg2 / count2 > sq[1]:
                 if channel == 'ch08':
-                    w_door['1'] = 1
+                    w_door['2'] = 1
                 elif channel == 'ch06':
-                    w_door['5'] = 1
+                    w_door['4'] = 1
                 elif channel == 'ch01':
-                    w_door['8'] = 1
+                    w_door['7'] = 1
                 return 2
         elif count1 != 0 and count2 == 0:
-            if avg1 / count1 > 55 and len(tempr) == 2:
+            if avg1 / count1 > 80 and len(tempr) == 2:
                 if channel == 'ch04':
                     w_door['6'] = 1
                 elif channel == 'ch07':
@@ -224,11 +225,11 @@ def for_frame(frame_number, output_array, return_detected_frame, x1_door_area,
         elif count1 == 0 and count2 != 0:
             if avg2 / count2 > sq[1] and len(tempr) == 3:
                 if channel == 'ch08':
-                    w_door['1'] = 1
+                    w_door['2'] = 1
                 elif channel == 'ch06':
-                    w_door['5'] = 1
+                    w_door['4'] = 1
                 elif channel == 'ch01':
-                    w_door['8'] = 1
+                    w_door['7'] = 1
                 return 4
         else:
             return 0
@@ -323,8 +324,8 @@ def for_frame(frame_number, output_array, return_detected_frame, x1_door_area,
         temp_name = _name
         temp_channel = channel
         temp_time = now.strftime("%Y-%m-%d %H:%M:%S")
-        # cv2.imwrite(os.path.join('analized' + '\\' + start_time[:10] + '\\' + channel, temp_name + '.jpg'),
-        #             return_detected_frame)
+        cv2.imwrite(os.path.join('analized' + '\\' + start_time[:10] + '\\' + channel, temp_name + '.jpg'),
+                    return_detected_frame)
         result = cv2.VideoWriter(os.path.join('analized' + '\\' + start_time[:10] + '\\' + channel, temp_name),
                                  cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'),
                                  10.0, size)
@@ -338,21 +339,10 @@ def for_frame(frame_number, output_array, return_detected_frame, x1_door_area,
         if len(record_frames_before) != 0:
             for i in record_frames_before:
                 result.write(i)
-        record_frames_before.clear()
         switch['true'] = 1
-    # if switch.get('video') == 0 and frame_number == length - 3:
-    #     switch['record'] = 0
-    #     switch['video'] = 0
-    #     switch['timer'] = 40
-    #     temp_temp = 0
-    #     result.release()
-    #     path = os.path.join('analized' + '\\' + start_time[:10] + '\\' + channel, temp_name)
-    #     screen_path = os.path.join('analized' + '\\' + start_time[:10] + '\\' + channel, temp_name + '.jpg')
-    #     os.remove(screen_path)
-    #     os.remove(path)
     if switch.get('true') == 1 and switch.get('record') == 1 and frame_number < length - 3 and switch.get(
             'timer') != 0:
-        if status[1] == "Somebody came/left (into) the room" and switch.get('exit') == 1:
+        if switch.get('exit') == 1:
             switch['timer'] += 20
         switch['timer'] -= 1
         result.write(return_detected_frame)
@@ -364,26 +354,34 @@ def for_frame(frame_number, output_array, return_detected_frame, x1_door_area,
         switch['true'] = 0
         result.release()
 
-        # post = r'C:\Users\user\Desktop\video\analized' + '\\' + start_time[:10] + '\\' + channel
-        # pre = r'ffmpeg -i C:\Users\user\Desktop\video\analized' + '\\' + start_time[:10] + '\\' + channel
-        # command = pre + '\\' + temp_name + ' ' + post + '\\' + temp_name + str(frame_number) + '.mp4'
-        # subprocess.call(str(command))
+        post = r'C:\Users\user\Desktop\video\analized' + '\\' + start_time[:10] + '\\' + channel
+        pre = r'ffmpeg -i C:\Users\user\Desktop\video\analized' + '\\' + start_time[:10] + '\\' + channel
+        command = pre + '\\' + temp_name + ' ' + post + '\\' + temp_name + str(frame_number) + '.mp4'
+        subprocess.call(str(command))
         os.chdir(r"C:\Users\user\Desktop\video\analized" + '\\' + start_time[:10] + '\\' + channel)
-        # download(channel, temp_name + str(frame_number) + '.mp4')
-        # download(channel, temp_name + '.jpg')
+        download(channel, temp_name + str(frame_number) + '.mp4')
+        download(channel, temp_name + '.jpg')
         temp = ''
-        # try:
-        #     for key in w_door:
-        #         if w_door.get(key) == 1:
-        #             temp = r8(channel, start_time, temp_name + str(frame_number) + '.mp4', temp_name + '.jpg', key)
-        #             w_door[key] = 0
-        # except HTTPError:
-        #     conn = sqlite3.connect('mydatabase.db')
-        #     cursor = conn.cursor()
-        #     cursor.execute("INSERT INTO requests VALUES(?,?)", (temp, 0))
-        #     conn.commit()
-        #     conn.close()
         os.chdir(r"C:\Users\user\Desktop\video")
+        conn = sqlite3.connect('mydatabase.db')
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM requests WHERE sent=0;")
+        conn.commit()
+        not_sent = cursor.fetchall()
+        if len(not_sent) != 0:
+            for i in not_sent:
+                print(i[0])
+                if r8_short(i[0]) is not None:
+                    cursor.execute('''UPDATE requests SET sent = 1 WHERE request=?;''', (i[0],))
+                    conn.commit()
+
+        for key in w_door:
+            if w_door.get(key) == 1:
+                r8(channel, start_time, temp_name + str(frame_number) + '.mp4', temp_name + '.jpg', key)
+                w_door[key] = 0
+
+        conn.close()
+        # os.chdir(r"C:\Users\user\Desktop\video")
         if status[0] == "Somebody in door area":
             pass
         else:
@@ -397,21 +395,17 @@ def main():
     try:
         status[1] = ''
         status[0] = ''
-
         dictionary_of_cords = {'ch01': [47, 450, 200, 33, 329, 67], 'ch04': [339, 535, 410, 27, 0, 0],
                                'ch06': [233, 587, 371, 5, 461, 13],
                                'ch07': [351, 540, 412, 23, 0, 0], 'ch08': [190, 634, 344, 29, 586, 31]}
         cont_or_nor = 0
         _name = ''
         os.chdir(r"C:\Users\user\Desktop\video")
-        all_dirs = os.listdir('all')
-        prev_video = 0
         ccounter = 0
         record_time = 0
-        length = 0
         _counter = 0
         while True:
-
+            all_dirs = os.listdir('all')
             if ccounter == len(all_dirs):
                 ccounter = 0
             while True:
@@ -526,7 +520,7 @@ def main():
                             )
                             prev_time = curr_time
                             door_cords = dictionary_of_cords.get(array_of_dates[_counter])
-                            for_frame(number, yolo.get_cords(), frame, door_cords[0], door_cords[1], video,
+                            for_frame(number, yolo.get_cords(), image, door_cords[0], door_cords[1], video,
                                       array_of_dates[_counter], _name, image, record_time)
 
                             stat(status[1], image, 10, 60)
@@ -551,10 +545,14 @@ def main():
                             conn.commit()
                             conn.close()
                             cv2.destroyAllWindows()
+                            os.chdir(r"C:\Users\user\Desktop\video")
                             break
                 _counter += 1
             ccounter += 1
     except FileNotFoundError:
+        f = open('text.txt', 'w')
+        f.write('\n' + 'exception')
+        f.close()
         pass
 
 
@@ -563,4 +561,7 @@ if __name__ == '__main__':  # write restart
         try:
             main()
         except FileNotFoundError:
+            f = open('text.txt', 'w')
+            f.write('\n' + 'exception')
+            f.close()
             main()
